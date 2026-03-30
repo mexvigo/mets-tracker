@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mets Tracker - 8-Bit Scoreboard</title>
+<link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+<div id="mets-banner">
+<div class="banner-record" id="season-record"></div>
+<div class="banner-last-result" id="last-result"></div>
+</div>
+<div id="no-game" class="hidden">
+<div class="no-game-msg">
+<h1>METS TRACKER</h1>
+<p>No game today...</p>
+<p class="sub">Checking again in 60 seconds</p>
+<div class="pixel-mr-met"></div>
+</div>
+</div>
+<div id="scoreboard-wrapper" class="hidden">
+<div id="citi-field" class="stadium">
+<div class="citi-sky">
+<div class="citi-cloud c1"></div>
+<div class="citi-cloud c2"></div>
+<div class="citi-cloud c3"></div>
+</div>
+<div class="citi-structure">
+<div class="citi-header">
+<span class="citi-logo">★ CITI FIELD ★</span>
+</div>
+<div class="scoreboard-board" id="home-board">
+</div>
+<div class="citi-base">
+<div class="citi-arch"></div>
+<div class="citi-arch"></div>
+<div class="citi-arch"></div>
+<div class="citi-arch"></div>
+<div class="citi-arch"></div>
+</div>
+</div>
+<div class="citi-field-grass"></div>
+<div class="citi-crowd"></div>
+</div>
+<div id="hell-stadium" class="stadium">
+<div class="hell-sky">
+<div class="lava-drip d1"></div>
+<div class="lava-drip d2"></div>
+<div class="lava-drip d3"></div>
+<div class="lava-drip d4"></div>
+<div class="lava-drip d5"></div>
+</div>
+<div class="hell-structure">
+<div class="hell-header">
+<span class="hell-skull">💀</span>
+<span class="hell-logo">SCOREBOARD FROM HELL</span>
+<span class="hell-skull">💀</span>
+</div>
+<div class="scoreboard-board" id="away-board">
+</div>
+<div class="hell-base">
+<div class="flame f1">🔥</div>
+<div class="flame f2">🔥</div>
+<div class="flame f3">🔥</div>
+<div class="flame f4">🔥</div>
+<div class="flame f5">🔥</div>
+</div>
+</div>
+<div class="hell-lava"></div>
+<div class="hell-demons"></div>
+</div>
+</div>
+<div id="status-bar">
+<span id="game-status">Loading...</span>
+<span id="last-update"></span>
+</div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

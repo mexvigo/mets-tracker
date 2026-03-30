@@ -1,0 +1,104 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Press Start 2P',monospace;background:#1a1a2e;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;image-rendering:pixelated}
+.hidden{display:none !important}
+#mets-banner{width:800px;max-width:95vw;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:'Press Start 2P',monospace}
+.banner-record{font-size:12px;color:#ff6b00;text-shadow:2px 2px 0 #002d72}
+.banner-last-result{font-size:9px;color:#aaa;text-align:right}
+.banner-last-result .result-w{color:#00cc44}
+.banner-last-result .result-l{color:#ff3333}
+.no-game-msg{text-align:center;padding:40px}
+.no-game-msg h1{font-size:28px;color:#ff6b00;text-shadow:3px 3px 0 #002d72;margin-bottom:30px;animation:blink8bit 1s step-end infinite}
+.no-game-msg p{font-size:12px;color:#aaa;margin-bottom:10px}
+.no-game-msg .sub{font-size:8px;color:#666}
+@keyframes blink8bit{50%{opacity:0}}
+.stadium{width:800px;max-width:95vw;position:relative}
+.scoreboard-board{background:#0a0a0a;border:4px solid #333;padding:12px;position:relative}
+.sb-teams{display:grid;grid-template-columns:120px repeat(var(--innings,9),1fr) 40px 40px 40px;gap:2px;margin-bottom:8px}
+.sb-cell{text-align:center;padding:6px 4px;font-size:10px;border:1px solid #222;min-width:28px}
+.sb-header{color:#888;font-size:8px;border:none}
+.sb-team-name{text-align:left;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-team-name.mets{color:#ff6b00}
+.sb-total{font-weight:bold;font-size:12px;border:1px solid #444}
+.sb-score{color:#ffcc00;font-size:11px}
+.sb-score.current-inning{color:#00ff00;animation:pulse8bit 0.8s step-end infinite}
+@keyframes pulse8bit{50%{color:#005500}}
+.sb-info{display:flex;justify-content:space-between;align-items:center;padding:8px 4px 4px;border-top:2px solid #333;font-size:8px;color:#aaa}
+.sb-count{display:flex;gap:16px}
+.sb-count span{color:#ffcc00}
+.sb-bases{display:grid;grid-template-areas:". second ." "third . first" ". home .";grid-template-columns:14px 14px 14px;grid-template-rows:14px 14px 14px;gap:2px}
+.base{width:12px;height:12px;transform:rotate(45deg);border:2px solid #555;background:transparent}
+.base.occupied{background:#ffcc00;border-color:#ffcc00;box-shadow:0 0 6px #ffcc00}
+.base-first{grid-area:first}
+.base-second{grid-area:second}
+.base-third{grid-area:third}
+.sb-outs{display:flex;gap:6px;align-items:center}
+.out-dot{width:10px;height:10px;border-radius:50%;border:2px solid #555;background:transparent}
+.out-dot.active{background:#ff3333;border-color:#ff3333;box-shadow:0 0 4px #ff3333}
+.sb-arrow{font-size:8px;color:#00ff00}
+.sb-arrow.top::before{content:"\25B2"}
+.sb-arrow.bottom::before{content:"\25BC"}
+#citi-field{position:relative}
+.citi-sky{height:60px;background:linear-gradient(180deg,#1a3a6e 0%,#3a6db5 60%,#5a9fd4 100%);position:relative;overflow:hidden;border-radius:8px 8px 0 0}
+.citi-cloud{position:absolute;width:60px;height:20px;background:rgba(255,255,255,0.3);border-radius:4px;animation:cloudDrift 20s linear infinite}
+.citi-cloud::before,.citi-cloud::after{content:'';position:absolute;background:rgba(255,255,255,0.3);border-radius:4px}
+.citi-cloud::before{width:30px;height:14px;top:-8px;left:10px}
+.citi-cloud::after{width:24px;height:12px;top:-4px;left:30px}
+.c1{top:10px;left:-60px;animation-duration:25s}
+.c2{top:25px;left:-60px;animation-delay:8s;animation-duration:30s}
+.c3{top:15px;left:-60px;animation-delay:15s;animation-duration:22s}
+@keyframes cloudDrift{from{transform:translateX(-60px)}to{transform:translateX(860px)}}
+.citi-structure{background:#002d72;border:4px solid #003d99;border-top:none;position:relative}
+.citi-header{background:linear-gradient(180deg,#003d99,#002d72);padding:10px;text-align:center;border-bottom:3px solid #ff6b00}
+.citi-logo{font-size:14px;color:#ff6b00;text-shadow:2px 2px 0 #001a44;letter-spacing:4px}
+.citi-base{display:flex;justify-content:space-around;padding:8px;background:#001a44}
+.citi-arch{width:40px;height:24px;border:3px solid #003d99;border-bottom:none;border-radius:20px 20px 0 0}
+.citi-field-grass{height:30px;background:#1a6b1a;border-top:3px solid #0d4d0d;position:relative}
+.citi-field-grass::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(90deg,transparent,transparent 20px,rgba(0,100,0,0.3) 20px,rgba(0,100,0,0.3) 40px)}
+.citi-crowd{height:20px;background:linear-gradient(0deg,#1a6b1a,#333);position:relative;border-radius:0 0 8px 8px;overflow:hidden}
+.citi-crowd::before{content:'';position:absolute;top:2px;left:0;right:0;height:16px;background:radial-gradient(circle 3px,#ff6b00 100%,transparent 100%) 0 0/12px 8px,radial-gradient(circle 3px,#002d72 100%,transparent 100%) 6px 4px/12px 8px}
+#citi-field .scoreboard-board{border-color:#003d99;background:#0a0a1a}
+#citi-field .sb-team-name.mets{color:#ff6b00}
+#hell-stadium{position:relative}
+.hell-sky{height:60px;background:linear-gradient(180deg,#1a0000 0%,#4a0000 40%,#8b0000 100%);position:relative;overflow:hidden;border-radius:8px 8px 0 0}
+.lava-drip{position:absolute;top:-10px;width:6px;background:linear-gradient(180deg,#ff4400,#ffaa00);border-radius:0 0 3px 3px;animation:dripFall 2s step-start infinite}
+.d1{left:10%;height:15px;animation-delay:0s}
+.d2{left:30%;height:20px;animation-delay:0.5s}
+.d3{left:50%;height:12px;animation-delay:1.2s}
+.d4{left:70%;height:18px;animation-delay:0.8s}
+.d5{left:90%;height:14px;animation-delay:1.5s}
+@keyframes dripFall{0%{transform:translateY(-10px);opacity:1}80%{transform:translateY(70px);opacity:1}100%{transform:translateY(70px);opacity:0}}
+.hell-structure{background:#1a0000;border:4px solid #660000;border-top:none;position:relative}
+.hell-header{background:linear-gradient(180deg,#330000,#1a0000);padding:10px;text-align:center;border-bottom:3px solid #ff3300;display:flex;justify-content:center;align-items:center;gap:12px}
+.hell-logo{font-size:14px;color:#ff3300;text-shadow:2px 2px 0 #000,0 0 10px #ff3300;letter-spacing:3px;animation:hellGlow 1.5s step-end infinite alternate}
+.hell-skull{font-size:20px;animation:skullBob 1s step-end infinite}
+@keyframes hellGlow{0%{text-shadow:2px 2px 0 #000,0 0 10px #ff3300}50%{text-shadow:2px 2px 0 #000,0 0 20px #ff6600,0 0 40px #ff3300}100%{text-shadow:2px 2px 0 #000,0 0 10px #ff3300}}
+@keyframes skullBob{50%{transform:translateY(-3px) rotate(5deg)}}
+.hell-base{display:flex;justify-content:space-around;padding:8px;background:#0d0000}
+.flame{font-size:18px;animation:flameFlicker 0.4s step-end infinite alternate}
+.f1{animation-delay:0s}
+.f2{animation-delay:0.1s}
+.f3{animation-delay:0.2s}
+.f4{animation-delay:0.3s}
+.f5{animation-delay:0.15s}
+@keyframes flameFlicker{0%{transform:scaleY(1) scaleX(1)}25%{transform:scaleY(1.2) scaleX(0.9)}50%{transform:scaleY(0.8) scaleX(1.1)}75%{transform:scaleY(1.1) scaleX(0.95)}100%{transform:scaleY(1) scaleX(1)}}
+.hell-lava{height:30px;background:linear-gradient(180deg,#cc3300,#ff6600,#ffaa00);position:relative;overflow:hidden;animation:lavaPulse 2s ease-in-out infinite alternate}
+.hell-lava::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(90deg,transparent,transparent 15px,rgba(255,0,0,0.4) 15px,rgba(255,0,0,0.4) 30px);animation:lavaFlow 3s linear infinite}
+@keyframes lavaFlow{from{transform:translateX(0)}to{transform:translateX(30px)}}
+@keyframes lavaPulse{from{filter:brightness(0.8)}to{filter:brightness(1.2)}}
+.hell-demons{height:20px;background:#1a0000;border-radius:0 0 8px 8px;position:relative;overflow:hidden}
+.hell-demons::before{content:'';position:absolute;top:2px;left:0;right:0;height:16px;background:radial-gradient(circle 3px,#ff3300 100%,transparent 100%) 0 0/14px 8px,radial-gradient(circle 3px,#990000 100%,transparent 100%) 7px 4px/14px 8px;opacity:0.7}
+#hell-stadium .scoreboard-board{border-color:#660000;background:#0a0000;box-shadow:inset 0 0 30px rgba(255,0,0,0.1)}
+#hell-stadium .sb-score{color:#ff6600}
+#hell-stadium .sb-score.current-inning{color:#ff0000;animation:hellPulse 0.8s step-end infinite}
+@keyframes hellPulse{50%{color:#550000}}
+#hell-stadium .sb-total{color:#ff4400}
+#hell-stadium .sb-header{color:#993333}
+#hell-stadium .sb-info{color:#993333;border-top-color:#660000}
+#hell-stadium .sb-count span{color:#ff6600}
+#hell-stadium .base{border-color:#660000}
+#hell-stadium .base.occupied{background:#ff3300;border-color:#ff3300;box-shadow:0 0 6px #ff3300}
+#hell-stadium .out-dot{border-color:#660000}
+#hell-stadium .out-dot.active{background:#ff0000;border-color:#ff0000;box-shadow:0 0 4px #ff0000}
+#status-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:2px solid #333;padding:8px 16px;display:flex;justify-content:space-between;align-items:center;font-size:8px;color:#666;font-family:'Press Start 2P',monospace;z-index:100}
+#game-status{color:#aaa}
+@media(max-width:600px){.sb-cell{padding:4px 2px;font-size:8px;min-width:20px}.sb-team-name{font-size:7px}.sb-total{font-size:10px}.sb-info{font-size:7px}.citi-logo,.hell-logo{font-size:10px}.sb-teams{grid-template-columns:80px repeat(var(--innings,9),1fr) 30px 30px 30px}}
