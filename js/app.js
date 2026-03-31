@@ -33,10 +33,10 @@ seasonRecordEl.textContent=`${record.wins}-${record.losses}`;
 }
 }catch(e){console.error("Standings error:",e)}
 try{
-const today=new Date();
-const end=today.toISOString().slice(0,10);
-const start=new Date(today);start.setDate(start.getDate()-7);
-const startStr=start.toISOString().slice(0,10);
+const now=new Date();
+const end=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+const start=new Date(now);start.setDate(start.getDate()-7);
+const startStr=start.getFullYear()+'-'+String(start.getMonth()+1).padStart(2,'0')+'-'+String(start.getDate()).padStart(2,'0');
 const url=`${MLB_API}/schedule?sportId=1&startDate=${startStr}&endDate=${end}&teamId=${METS_TEAM_ID}&hydrate=team,linescore`;
 const res=await fetch(url);
 if(!res.ok)return;
@@ -78,7 +78,8 @@ else{schedulePoll(POLL_INTERVAL_IDLE)}
 }
 function schedulePoll(interval){if(currentPoll)clearTimeout(currentPoll);currentPoll=setTimeout(fetchAndRender,interval)}
 async function getTodaysMetsGame(){
-const today=new Date().toISOString().slice(0,10);
+const now=new Date();
+const today=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
 const url=`${MLB_API}/schedule?sportId=1&date=${today}&teamId=${METS_TEAM_ID}&hydrate=team,linescore`;
 const res=await fetch(url);
 if(!res.ok)throw new Error(`Schedule API ${res.status}`);

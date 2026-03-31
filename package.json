@@ -1,0 +1,9 @@
+{
+  "name": "mets-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "8-bit style live Mets scoreboard - Citi Field for home games, Hell for away games",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
