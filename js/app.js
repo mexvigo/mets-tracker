@@ -80,15 +80,26 @@ function schedulePoll(interval){if(currentPoll)clearTimeout(currentPoll);current
 async function getTodaysMetsGame(){
 const now=new Date();
 const today=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
-const url=`${MLB_API}/schedule?sportId=1&date=${today}&teamId=${METS_TEAM_ID}&hydrate=team,linescore`;
+const yesterday=new Date(now);yesterday.setDate(yesterday.getDate()-1);
+const yStr=yesterday.getFullYear()+'-'+String(yesterday.getMonth()+1).padStart(2,'0')+'-'+String(yesterday.getDate()).padStart(2,'0');
+const url=`${MLB_API}/schedule?sportId=1&startDate=${yStr}&endDate=${today}&teamId=${METS_TEAM_ID}&hydrate=team,linescore`;
 const res=await fetch(url);
 if(!res.ok)throw new Error(`Schedule API ${res.status}`);
 const data=await res.json();
 if(!data.dates||data.dates.length===0)return null;
-const games=data.dates[0].games;
-if(!games||games.length===0)return null;
-const liveGame=games.find(g=>g.status.abstractGameState==="Live");
-return liveGame||games[0];
+let liveGame=null;
+let latestGame=null;
+for(const d of data.dates){
+for(const g of (d.games||[])){
+if(g.status.abstractGameState==="Live"){liveGame=g}
+latestGame=g;
+}
+}
+if(liveGame)return liveGame;
+const allGames=data.dates.flatMap(d=>d.games||[]);
+const todayGames=allGames.filter(g=>{const gd=g.officialDate||g.gameDate?.slice(0,10);return gd===today});
+if(todayGames.length>0)return todayGames[0];
+return latestGame;
 }
 async function getLiveGameData(gamePk){
 const url=`${MLB_API}.1/game/${gamePk}/feed/live`;
